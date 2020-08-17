@@ -37,6 +37,7 @@ class TrafficLightViewModel: NSObject {
     var trafficTimer: TrafficTimerUtility?
     var currentTrafficLightColor: TrafficLightState = .red
     var nextTrafficLightColor: TrafficLightState = .green
+    var previousTrafficColor: TrafficLightState = .green
     weak var delegate: TrafficSignalChangeStateProtocol?
     /*Function for starting the timer based on the traffic signal state*/
     func startTrafficSignal(timerState: TrafficLightState = .red) {
@@ -48,15 +49,26 @@ class TrafficLightViewModel: NSObject {
     @objc func switchTrafficLightToNextState() {
         switch currentTrafficLightColor {
         case .red:
-            nextTrafficLightColor = .green
+            nextTrafficLightColor = .orange
         case .orange :
-            nextTrafficLightColor = .red
+            self.setPreviuosTrafficState(trafficState: previousTrafficColor)
         case .green :
             nextTrafficLightColor = .orange
         }
+        previousTrafficColor = currentTrafficLightColor
         /*calling the delegate method to update the traffic signal view in traffic light view controller*/
         delegate?.trafficSignalChangeToState(state: nextTrafficLightColor)
         /*Calling the timer function for showing next traffic signal state*/
         startTrafficSignal(timerState: nextTrafficLightColor)
+    }
+    func setPreviuosTrafficState(trafficState: TrafficLightState) {
+        switch trafficState {
+        case .red:
+            nextTrafficLightColor = .green
+        case .green:
+            nextTrafficLightColor = .red
+        case .orange:
+            break
+        }
     }
 }

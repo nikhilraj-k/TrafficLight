@@ -9,13 +9,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TrafficLight/View/TrafficLightView.swift"
-            timestampString = "619333985.843305"
+            filePath = "TrafficLight/ViewModel/TrafficLightViewModel.swift"
+            timestampString = "619356046.965773"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "onOffSignalSwitchAction(_:)"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "switchTrafficLightToNextState()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TrafficLight/ViewModel/TrafficLightViewModel.swift"
+            timestampString = "619356046.965844"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "switchTrafficLightToNextState()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

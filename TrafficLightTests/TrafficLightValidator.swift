@@ -47,4 +47,11 @@ class TrafficLightValidator: XCTestCase {
         XCTAssertEqual(viewObject.signalViews[TrafficLightColorIndex.redIndex.rawValue].alpha, 1.0)
         XCTAssertEqual(viewObject.signalViews[TrafficLightColorIndex.greenIndex.rawValue].alpha, 0.5)
     }
+    func testsetPreviuosTrafficState() {
+        let viewModel = TrafficLightViewModel()
+        viewModel.setPreviuosTrafficState(trafficState: .red)
+        XCTAssertEqual(viewModel.nextTrafficLightColor.rawValue, TrafficLightState.green.rawValue)
+        viewModel.setPreviuosTrafficState(trafficState: .green)
+        XCTAssertEqual(viewModel.nextTrafficLightColor.rawValue, TrafficLightState.red.rawValue)
+    }
 }
