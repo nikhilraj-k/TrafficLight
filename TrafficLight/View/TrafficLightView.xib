@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TrafficLightView" customModule="TrafficLightSampleApp" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TrafficLightView" customModule="TrafficLight" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="bp0-Xe-tus"/>
                 <outlet property="headerLabel" destination="MDs-fj-rPt" id="zs1-4k-3u3"/>
+                <outlet property="onOffSignalSwitch" destination="u2g-pX-m1H" id="3qt-fn-re9"/>
+                <outlet property="startSignalLabel" destination="zAm-Q4-SUS" id="XKA-u0-hPF"/>
                 <outletCollection property="signalViews" destination="rCS-BU-2aj" collectionClass="NSMutableArray" id="rGo-1S-qhg"/>
                 <outletCollection property="signalViews" destination="TRy-ts-dO8" collectionClass="NSMutableArray" id="If5-vI-Owk"/>
                 <outletCollection property="signalViews" destination="4Hs-35-BMH" collectionClass="NSMutableArray" id="M4k-Bz-kfv"/>
@@ -32,7 +37,7 @@
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rCS-BU-2aj">
                             <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
-                            <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="120" id="eNG-r2-gKY"/>
                                 <constraint firstAttribute="width" constant="120" id="xpf-tH-2jk"/>
@@ -40,11 +45,11 @@
                         </view>
                         <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TRy-ts-dO8">
                             <rect key="frame" x="0.0" y="140" width="120" height="124"/>
-                            <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
                         <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Hs-35-BMH">
                             <rect key="frame" x="0.0" y="284" width="120" height="120"/>
-                            <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
                     </subviews>
                     <constraints>
@@ -53,19 +58,36 @@
                         <constraint firstItem="TRy-ts-dO8" firstAttribute="height" secondItem="rCS-BU-2aj" secondAttribute="height" multiplier="1.03125" id="ARz-aN-LHI"/>
                         <constraint firstItem="4Hs-35-BMH" firstAttribute="width" secondItem="rCS-BU-2aj" secondAttribute="width" id="BEh-d0-UiX"/>
                         <constraint firstItem="TRy-ts-dO8" firstAttribute="width" secondItem="rCS-BU-2aj" secondAttribute="width" id="BU8-2u-iYx"/>
+                        <constraint firstItem="TRy-ts-dO8" firstAttribute="top" secondItem="rCS-BU-2aj" secondAttribute="bottom" constant="20" id="EEU-hW-Jve"/>
                         <constraint firstItem="rCS-BU-2aj" firstAttribute="trailing" secondItem="dcE-zt-HQP" secondAttribute="trailingMargin" id="Uq4-Dh-fih"/>
                         <constraint firstItem="TRy-ts-dO8" firstAttribute="trailing" secondItem="4Hs-35-BMH" secondAttribute="trailing" id="oAi-3v-LMr"/>
                         <constraint firstItem="TRy-ts-dO8" firstAttribute="centerY" secondItem="dcE-zt-HQP" secondAttribute="centerY" id="uol-hc-fXc"/>
                     </constraints>
                 </stackView>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u2g-pX-m1H">
+                    <rect key="frame" x="228.5" y="690" width="51" height="31"/>
+                    <connections>
+                        <action selector="onOffSignalSwitchAction:" destination="-1" eventType="valueChanged" id="YXV-Di-znm"/>
+                    </connections>
+                </switch>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Signal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAm-Q4-SUS">
+                    <rect key="frame" x="132" y="696.5" width="86.5" height="18"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
-            <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="zAm-Q4-SUS" firstAttribute="centerY" secondItem="u2g-pX-m1H" secondAttribute="centerY" id="1Nb-lK-jDw"/>
                 <constraint firstItem="dcE-zt-HQP" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="8ob-z7-JHu"/>
                 <constraint firstItem="dcE-zt-HQP" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="EQB-74-idz"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="MDs-fj-rPt" secondAttribute="trailing" constant="20" id="Ju1-RS-OGb"/>
+                <constraint firstItem="zAm-Q4-SUS" firstAttribute="leading" secondItem="dcE-zt-HQP" secondAttribute="leading" constant="-15" id="MUf-Qf-PhZ"/>
+                <constraint firstItem="u2g-pX-m1H" firstAttribute="top" secondItem="dcE-zt-HQP" secondAttribute="bottom" constant="35" id="NiO-Li-3fF"/>
                 <constraint firstItem="dcE-zt-HQP" firstAttribute="top" secondItem="MDs-fj-rPt" secondAttribute="bottom" constant="86" id="QFm-MT-xfZ"/>
                 <constraint firstItem="MDs-fj-rPt" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="ezt-Jr-Sdc"/>
+                <constraint firstItem="u2g-pX-m1H" firstAttribute="leading" secondItem="zAm-Q4-SUS" secondAttribute="trailing" constant="10" id="upG-qS-0Jp"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="139" y="127"/>

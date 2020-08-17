@@ -23,7 +23,7 @@ class TrafficLightViewController: UIViewController {
     /*Function for setting the initial properties of the traffic controller*/
     func setInitialProperties() {
         trafficLightViewModel.delegate = self
-        trafficLightViewModel.startTrafficSignal()
+        trafficLightView.delegate = self
     }
 }
 
@@ -31,5 +31,19 @@ class TrafficLightViewController: UIViewController {
 extension TrafficLightViewController: TrafficSignalChangeStateProtocol {
     func trafficSignalChangeToState(state: TrafficLightState) {
         trafficLightView.setTrafficSignalPropertiesForState(state: state)
+    }
+}
+
+extension TrafficLightViewController: TrafficSignalSwitchProtocol {
+    func trafficSignalSwitchChange(status: UISwitch) {
+        if status.isOn {
+            trafficLightView.signalViews[TrafficLightColorIndex.redIndex.rawValue].alpha = 1.0
+            trafficLightViewModel.startTrafficSignal()
+        } else {
+            self.trafficLightViewModel.trafficTimer?.stopTrafficTimer()
+            for view in trafficLightView.signalViews {
+                view.alpha = 0.5
+            }
+        }
     }
 }

@@ -8,10 +8,19 @@
 
 import UIKit
 
+/*Protocol added for notifying the state change of the traffic signal*/
+protocol TrafficSignalSwitchProtocol: class {
+    func trafficSignalSwitchChange(status: UISwitch)
+}
+
 class TrafficLightView: UIView {
     @IBOutlet var signalViews: [UIView]!
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var headerLabel: UILabel!
+    @IBOutlet weak var startSignalLabel: UILabel!
+    @IBOutlet weak var onOffSignalSwitch: UISwitch!
+    weak var delegate: TrafficSignalSwitchProtocol?
+
     /*
      @IBOutlet var contentView: UIView!
      // Only override draw() if you perform custom drawing.
@@ -30,27 +39,28 @@ class TrafficLightView: UIView {
         commonInit()
     }
     func commonInit() {
-        Bundle.main.loadNibNamed("TrafficLightView", owner: self, options: nil)
+        Bundle.main.loadNibNamed(trafficLightView, owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         self.setTrafficLightInitialProperties(views: self.signalViews)
         self.headerLabel.text = trafficHeaderLabel
+        self.onOffSignalSwitch.setOn(false, animated: false)
+        startSignalLabel.text = startSignal
     }
     // MARK: Instance functions
     /*Function for setting the initial state of the traffic light*/
     func setTrafficLightInitialProperties(views: [UIView]) {
         for view in views {
             view.makeRounded()
+            view.alpha = 0.5
             switch view.tag {
             case 0:
                 view.backgroundColor = .red
             case 1:
                 view.backgroundColor = .orange
-                view.alpha = 0.5
             case 2:
                 view.backgroundColor = .green
-                view.alpha = 0.5
             default:
                 print("")
             }
@@ -76,5 +86,8 @@ class TrafficLightView: UIView {
         case .green :
             setSignalViewAlpha(viewTag: TrafficLightColorIndex.greenIndex.rawValue)
         }
+    }
+    @IBAction func onOffSignalSwitchAction(_ sender: UISwitch) {
+        delegate?.trafficSignalSwitchChange(status: sender)
     }
 }

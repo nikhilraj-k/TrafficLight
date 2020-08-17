@@ -9,3 +9,5 @@
 import Foundation
 
 let trafficHeaderLabel = "Traffic Signal"
+let startSignal = "Start Traffic Signal"
+let trafficLightView = "TrafficLightView"
